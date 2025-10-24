@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Halloween Hunt - Clue 3</title>
+  <title>Halloween Hunt - Clue 4</title>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cabin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
   <script>
-    if (new URLSearchParams(window.location.search).get("code") !== "witch99") {
-      window.location.href = "clue2.html";
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("code") !== "bat88") {
+      window.location.href = "clue2.html"; // back to previous clue
     }
   </script>
 </head>
 <body>
   <div class="card">
-    <h1>🎃 Clue #3 🎃</h1>
+    <h1>🎃 Clue #4 🎃</h1>
     <p class="riddle">
-      <!-- Change this text later -->
-      Amongst steaming brews and cups of cheer,<br>
-      A phantom waits, its clue is near.
+      Where quiet calls in shadows hide,<br>
+      This next QR is tucked inside.
     </p>
-    <p class="hint">☕ Find me near the coffee machine...</p>
+    <p class="hint">📞 Search the phone booth...</p>
   </div>
 </body>
 </html>

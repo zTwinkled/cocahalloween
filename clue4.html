@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Halloween Hunt - Clue 4</title>
+  <title>Halloween Hunt - Final Clue</title>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cabin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
   <script>
-    if (new URLSearchParams(window.location.search).get("code") !== "bat88") {
-      window.location.href = "clue3.html";
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("code") !== "final13") {
+      window.location.href = "clue3.html"; // back to previous clue
     }
   </script>
 </head>
 <body>
   <div class="card">
-    <h1>🎃 Clue #4 🎃</h1>
+    <h1>🎉 You’ve Found the Treasure! 🎉</h1>
     <p class="riddle">
-      <!-- Change this text later -->
-      Where quiet calls in shadows hide,<br>
-      This next QR is tucked inside.
+      Congratulations brave hunter!<br>
+      You completed the Halloween QR Hunt.<br>
+      Now claim your spooky prize!
     </p>
-    <p class="hint">📞 Search the phone booth...</p>
+    <p class="hint">🎁 Go to the reception desk for your reward...</p>
   </div>
 </body>
 </html>

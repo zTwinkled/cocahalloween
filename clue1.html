@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Halloween Hunt - Clue 1</title>
+  <title>Halloween Hunt - Clue 2</title>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cabin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("code") !== "ghost42") {
+      window.location.href = "index.html"; // back to start if wrong/no code
+    }
+  </script>
 </head>
 <body>
   <div class="card">
-    <h1>🎃 Clue #1 🎃</h1>
+    <h1>🎃 Clue #2 🎃</h1>
     <p class="riddle">
-      In a room where shadows meet the clatter of keys,<br>
-      A ghostly whisper hides among the paper trees.<br>
-      Seek where the ink monster lives...
+      The shadows stretch where whispers stay,<br>
+      The moonlight shows a spooky way.
     </p>
-    <p class="hint">👻 Find the printer's lair for your next code.</p>
+    <p class="hint">👻 Look behind the soda cans...</p>
   </div>
 </body>
 </html>
