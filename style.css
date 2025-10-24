@@ -1,0 +1,53 @@
+﻿body {
+  background: linear-gradient(to bottom, #4b0082, #0b0b0b);
+  font-family: 'Cabin', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 3px solid #ff7518;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  color: white;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(255, 117, 24, 0.6);
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Creepster', cursive;
+  font-size: 2rem;
+  color: #ff7518;
+  margin-bottom: 1rem;
+}
+
+.riddle {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.hint {
+  font-style: italic;
+  color: #ffcc99;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 15px;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+  .riddle {
+    font-size: 1rem;
+  }
+}
