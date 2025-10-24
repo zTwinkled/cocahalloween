@@ -1,53 +1,216 @@
-﻿body {
-  background: linear-gradient(to bottom, #4b0082, #0b0b0b);
-  font-family: 'Cabin', sans-serif;
+﻿/* ===== Ultimate Cinematic Horror CSS ===== */
+
+/* ===== Background ===== */
+body {
+  background: radial-gradient(circle at top, #4a0000, #1a0000 40%, #000000 90%);
+  background-size: 200% 200%;
+  animation: gradientBG 18s ease-in-out infinite;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  font-family: 'Cabin', sans-serif;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Fog */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 1%, transparent 60%);
+  background-size: 300% 300%;
+  animation: fogMove 60s linear infinite;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+/* Grain overlay */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+@keyframes gradientBG {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fogMove {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(-25%, -25%); }
+}
+
+/* ===== Horror Card ===== */
 .card {
-  background-color: rgba(0, 0, 0, 0.85);
-  border: 3px solid #ff7518;
+  background-color: rgba(0, 0, 0, 0.92);
+  border: 3px solid #ff0000;
   border-radius: 15px;
-  padding: 20px;
-  margin: 20px;
-  color: white;
-  max-width: 500px;
+  padding: 25px;
+  margin: 15px;
+  max-width: 520px;
   width: 90%;
-  box-shadow: 0 0 20px rgba(255, 117, 24, 0.6);
-  text-align: center;
+  box-shadow:
+    0 0 15px rgba(255, 0, 0, 0.8),
+    0 0 40px rgba(255, 0, 0, 0.3),
+    inset 0 0 15px rgba(255, 0, 0, 0.4);
+  animation: fadeIn 1.2s ease forwards, pulseGlow 3s infinite alternate;
+  backdrop-filter: blur(3px);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
 }
 
+/* Blood Glow */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(255,0,0,0.6); }
+  100% { box-shadow: 0 0 30px rgba(255,0,0,0.9); }
+}
+
+/* ===== Blood Splatter Hover ===== */
+.card:hover::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,0,0,0.25) 0%, transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(255,0,0,0.3) 0%, transparent 40%),
+    radial-gradient(circle at 40% 60%, rgba(255,0,0,0.18) 0%, transparent 35%);
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  animation: splatterFade 1.2s ease-out forwards;
+}
+
+@keyframes splatterFade {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 0.7; transform: scale(1); }
+}
+
+/* ===== Title with Dripping Blood ===== */
 h1 {
-  font-family: 'Creepster', cursive;
-  font-size: 2rem;
-  color: #ff7518;
-  margin-bottom: 1rem;
+  font-family: 'Nosifer', cursive;
+  font-size: 2.8rem;
+  color: #ff3333;
+  text-shadow:
+    0 0 10px rgba(255, 0, 0, 0.9),
+    0 0 25px rgba(255, 0, 0, 0.6);
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  animation: textPulse 3s infinite alternate;
 }
 
+/* Create multiple drips */
+h1::before,
+h1::after,
+h1 span::before,
+h1 span::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 20px;
+  background: #ff0000;
+  border-radius: 50%;
+  opacity: 0.9;
+  animation: bloodDrip 2.8s linear infinite;
+}
+
+/* Randomize drip positions & timing */
+h1::before { left: 30%; animation-delay: 0s; }
+h1::after { left: 55%; animation-delay: 0.8s; }
+h1 span::before { left: 70%; animation-delay: 1.5s; }
+h1 span::after { left: 40%; animation-delay: 2.2s; }
+
+/* Drip motion */
+@keyframes bloodDrip {
+  0% {
+    transform: translateY(0) scaleY(0.3);
+    opacity: 0;
+    height: 0px;
+  }
+  10% {
+    opacity: 1;
+    height: 10px;
+  }
+  40% {
+    height: 22px;
+  }
+  70% {
+    transform: translateY(20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+/* Blood pulse glow for title */
+@keyframes textPulse {
+  0% { text-shadow: 0 0 5px #ff0000, 0 0 20px #ff0000; }
+  100% { text-shadow: 0 0 15px #ff6666, 0 0 35px #ff0000; }
+}
+
+/* ===== Riddle Text ===== */
 .riddle {
+  font-family: 'Special Elite', serif;
   font-size: 1.1rem;
-  line-height: 1.4;
+  line-height: 1.6;
   margin-bottom: 1.5rem;
+  background-color: rgba(50, 0, 0, 0.75);
+  padding: 14px;
+  border: 1px dashed #ff3333;
+  border-radius: 6px;
+  color: #fff0f0;
+  text-shadow: 0 0 5px rgba(255, 50, 50, 0.3);
+  transition: background 0.3s;
 }
 
+.riddle:hover {
+  background-color: rgba(80, 0, 0, 0.85);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+/* ===== Hint ===== */
 .hint {
-  font-style: italic;
-  color: #ffcc99;
+  font-family: 'Nosifer', cursive;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ff1a1a;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation: flicker 1.5s infinite;
+  text-shadow: 0 0 10px #ff0000;
 }
 
+/* Flicker */
+@keyframes flicker {
+  0%, 19%, 21%, 60%, 64%, 100% { opacity: 1; }
+  20%, 61%, 63% { opacity: 0.4; }
+}
+
+/* Fade-in entrance */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Mobile ===== */
 @media (max-width: 600px) {
-  .card {
-    padding: 15px;
-  }
-  h1 {
-    font-size: 1.6rem;
-  }
-  .riddle {
-    font-size: 1rem;
-  }
+  .card { padding: 18px; }
+  h1 { font-size: 1.8rem; }
+  .riddle { font-size: 1rem; }
 }
