@@ -6,10 +6,21 @@
   <title>Halloween Hunt - Clue 2</title>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cabin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FFFDRLBEE2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FFFDRLBEE2');
+  </script>
+
+  <!-- Code lock -->
   <script>
     const params = new URLSearchParams(window.location.search);
     if (params.get("code") !== "ghost42") {
-      window.location.href = "index.html"; // back to start if wrong/no code
+      window.location.href = "index.html";
     }
   </script>
 </head>
