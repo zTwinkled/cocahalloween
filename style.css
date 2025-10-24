@@ -56,16 +56,16 @@ body::after {
 /* ===== Horror Card ===== */
 .card {
   background-color: rgba(0, 0, 0, 0.92);
-  border: 3px solid #ff0000;
+  border: 3px solid rgba(178,34,34,0.9); /* darker crimson */
   border-radius: 15px;
   padding: 25px;
   margin: 15px;
   max-width: 520px;
   width: 90%;
   box-shadow:
-    0 0 15px rgba(255, 0, 0, 0.8),
-    0 0 40px rgba(255, 0, 0, 0.3),
-    inset 0 0 15px rgba(255, 0, 0, 0.4);
+    0 0 12px rgba(178, 34, 34, 0.5),
+    0 0 28px rgba(178, 34, 34, 0.25),
+    inset 0 0 12px rgba(178, 34, 34, 0.3);
   animation: fadeIn 1.2s ease forwards, pulseGlow 3s infinite alternate;
   backdrop-filter: blur(3px);
   position: relative;
@@ -73,10 +73,10 @@ body::after {
   overflow: hidden;
 }
 
-/* Blood Glow */
+/* Card Glow Pulse — toned down */
 @keyframes pulseGlow {
-  0% { box-shadow: 0 0 10px rgba(255,0,0,0.6); }
-  100% { box-shadow: 0 0 30px rgba(255,0,0,0.9); }
+  0% { box-shadow: 0 0 8px rgba(178, 34, 34, 0.4); }
+  100% { box-shadow: 0 0 18px rgba(178, 34, 34, 0.5); }
 }
 
 /* ===== Blood Splatter Hover ===== */
@@ -86,34 +86,34 @@ body::after {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background:
-    radial-gradient(circle at 20% 30%, rgba(255,0,0,0.25) 0%, transparent 40%),
-    radial-gradient(circle at 70% 80%, rgba(255,0,0,0.3) 0%, transparent 40%),
-    radial-gradient(circle at 40% 60%, rgba(255,0,0,0.18) 0%, transparent 35%);
-  opacity: 0.7;
+    radial-gradient(circle at 20% 30%, rgba(178,34,34,0.25) 0%, transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(178,34,34,0.3) 0%, transparent 40%),
+    radial-gradient(circle at 40% 60%, rgba(178,34,34,0.18) 0%, transparent 35%);
+  opacity: 0.6;
   mix-blend-mode: screen;
   animation: splatterFade 1.2s ease-out forwards;
 }
 
 @keyframes splatterFade {
   from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 0.7; transform: scale(1); }
+  to { opacity: 0.6; transform: scale(1); }
 }
 
 /* ===== Title with Dripping Blood ===== */
 h1 {
   font-family: 'Nosifer', cursive;
   font-size: 2.8rem;
-  color: rgba(204, 34, 34, 0.9); /* softer dark crimson */
+  color: rgba(178, 34, 34, 0.9); /* darker deep crimson */
   text-shadow:
-    0 0 8px rgba(204, 34, 34, 0.6),
-    0 0 18px rgba(255, 50, 50, 0.5); /* toned-down glow */
+    0 0 6px rgba(178, 34, 34, 0.5),
+    0 0 14px rgba(178, 34, 34, 0.3);
   position: relative;
   display: inline-block;
   overflow: visible;
   animation: textPulse 3s infinite alternate;
 }
 
-/* Create multiple drips */
+/* Drips */
 h1::before,
 h1::after,
 h1 span::before,
@@ -122,13 +122,13 @@ h1 span::after {
   position: absolute;
   width: 6px;
   height: 20px;
-  background: rgba(204, 34, 34, 0.9); /* match toned crimson */
+  background: rgba(178, 34, 34, 0.8); /* match toned-down crimson */
   border-radius: 50%;
-  opacity: 0.85;
+  opacity: 0.8;
   animation: bloodDrip 2.8s linear infinite;
 }
 
-/* Randomize drip positions & timing */
+/* Random positions */
 h1::before { left: 30%; animation-delay: 0s; }
 h1::after { left: 55%; animation-delay: 0.8s; }
 h1 span::before { left: 70%; animation-delay: 1.5s; }
@@ -136,32 +136,17 @@ h1 span::after { left: 40%; animation-delay: 2.2s; }
 
 /* Drip motion */
 @keyframes bloodDrip {
-  0% {
-    transform: translateY(0) scaleY(0.3);
-    opacity: 0;
-    height: 0px;
-  }
-  10% {
-    opacity: 1;
-    height: 10px;
-  }
-  40% {
-    height: 22px;
-  }
-  70% {
-    transform: translateY(20px);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(40px);
-    opacity: 0;
-  }
+  0%   { transform: translateY(0) scaleY(0.3); opacity: 0; height: 0px; }
+  10%  { opacity: 1; height: 10px; }
+  40%  { height: 22px; }
+  70%  { transform: translateY(20px); opacity: 1; }
+  100% { transform: translateY(40px); opacity: 0; }
 }
 
-/* Blood pulse glow for title */
+/* Title Glow Pulse — softer */
 @keyframes textPulse {
-  0% { text-shadow: 0 0 5px rgba(204, 34, 34, 0.7), 0 0 15px rgba(255, 50, 50, 0.5); }
-  100% { text-shadow: 0 0 12px rgba(255, 80, 80, 0.6), 0 0 25px rgba(204, 34, 34, 0.7); }
+  0% { text-shadow: 0 0 4px rgba(178, 34, 34, 0.4), 0 0 10px rgba(178,34,34,0.3); }
+  100% { text-shadow: 0 0 10px rgba(178, 34, 34, 0.5), 0 0 18px rgba(178,34,34,0.4); }
 }
 
 /* ===== Riddle Text ===== */
@@ -172,16 +157,16 @@ h1 span::after { left: 40%; animation-delay: 2.2s; }
   margin-bottom: 1.5rem;
   background-color: rgba(50, 0, 0, 0.75);
   padding: 14px;
-  border: 1px dashed #ff3333;
+  border: 1px dashed rgba(178,34,34,0.6);
   border-radius: 6px;
   color: #fff0f0;
-  text-shadow: 0 0 5px rgba(255, 50, 50, 0.3);
+  text-shadow: 0 0 5px rgba(178, 34, 34, 0.2);
   transition: background 0.3s;
 }
 
 .riddle:hover {
   background-color: rgba(80, 0, 0, 0.85);
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(178, 34, 34, 0.3);
 }
 
 /* ===== Hint ===== */
@@ -189,17 +174,17 @@ h1 span::after { left: 40%; animation-delay: 2.2s; }
   font-family: 'Nosifer', cursive;
   font-size: 1rem;
   font-weight: bold;
-  color: #ff1a1a;
+  color: rgba(178, 34, 34, 0.9);
   text-transform: uppercase;
   letter-spacing: 3px;
   animation: flicker 1.5s infinite;
-  text-shadow: 0 0 10px #ff0000;
+  text-shadow: 0 0 6px rgba(178, 34, 34, 0.4);
 }
 
 /* Flicker */
 @keyframes flicker {
   0%, 19%, 21%, 60%, 64%, 100% { opacity: 1; }
-  20%, 61%, 63% { opacity: 0.4; }
+  20%, 61%, 63% { opacity: 0.5; }
 }
 
 /* Fade-in entrance */
