@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Halloween Hunt - Final Clue</title>
+  <title>Halloween Hunt - Final QR Code Found</title>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cabin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
@@ -20,19 +20,23 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     if (params.get("code") !== "final13") {
-      window.location.href = "clue3.html";
+      window.location.href = "clue3.html"; // or change to wherever they should go if not correct
     }
   </script>
 </head>
 <body>
   <div class="card">
-    <h1>🎉 You’ve Found the Treasure! 🎉</h1>
+    <h1>🎉 You’ve Found the Last QR Code! 🎉</h1>
     <p class="riddle">
-      Congratulations brave hunter!<br>
-      You completed the Halloween QR Hunt.<br>
-      Now claim your spooky prize!
+      Congratulations, brave hunter!<br>
+      You have conquered the Halloween QR Hunt.<br>
+      One final task stands between you and your spooky prize...
     </p>
-    <p class="hint">🎁 Go to the reception desk for your reward...</p>
+    <p class="final-task">
+      ✍️ <strong>Write down the answer for every single location you discovered</strong> —  
+      be as <u>detailed</u> as possible! Include where it was and what you had to find or do.<br>
+      Present your completed answer sheet to the reception desk to claim your reward.
+    </p>
   </div>
 </body>
 </html>
